@@ -12,6 +12,8 @@ const flash = require("connect-flash");
 
 // Internal dependencies
 require("dotenv").config();
+const taskRoutes = require("./routes/taskRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 const store = new MongoDBStore({
@@ -39,6 +41,8 @@ app.use(csrfProtection);
 app.use(flash());
 
 // Routes
+app.use(taskRoutes);
+app.use(authRoutes);
 app.use((req, res) => {
   res.render("404");
 });
