@@ -12,6 +12,8 @@ const flash = require("connect-flash");
 
 // Internal dependencies
 require("dotenv").config();
+const User = require("./models/user");
+const Task = require("./models/task");
 
 const app = express();
 const store = new MongoDBStore({
