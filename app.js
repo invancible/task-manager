@@ -12,8 +12,6 @@ const flash = require("connect-flash");
 
 // Internal dependencies
 require("dotenv").config();
-const User = require("./models/user");
-const Task = require("./models/task");
 
 const app = express();
 const store = new MongoDBStore({
@@ -41,6 +39,9 @@ app.use(csrfProtection);
 app.use(flash());
 
 // Routes
+app.use((req, res) => {
+  res.render("404");
+});
 
 // Connection
 mongoose
