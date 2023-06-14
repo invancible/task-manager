@@ -14,6 +14,7 @@ const flash = require("connect-flash");
 require("dotenv").config();
 const taskRoutes = require("./routes/taskRoutes");
 const authRoutes = require("./routes/authRoutes");
+const injectLocal = require("./middleware/injectLocal");
 
 const app = express();
 const store = new MongoDBStore({
@@ -39,6 +40,7 @@ app.use(
 );
 app.use(csrfProtection);
 app.use(flash());
+app.use(injectLocal);
 
 // Routes
 app.use(taskRoutes);
